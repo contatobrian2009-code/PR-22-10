@@ -19,9 +19,10 @@ jobs:
         with:
           node-version: '18'
 
-      - name: Instalar Playwright para automação de browser
+      - name: Instalar dependências localmente
         run: |
-          npm install -g @playwright/test
+          npm init -y
+          npm install --save-dev @playwright/test
           npx playwright install --with-deps chromium
 
       - name: Iniciar servidor local
@@ -37,7 +38,7 @@ jobs:
             const browser = await chromium.launch();
             const page = await browser.newPage();
             await page.goto('http://localhost:8080/test-frontend.html');
-            await page.waitForTimeout(2000); // Aguarda a execução dos testes
+            await page.waitForTimeout(2000);
             
             const falhas = await page.\$('.fail');
             if (falhas) {
