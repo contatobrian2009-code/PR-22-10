@@ -14,6 +14,9 @@ jobs:
       - name: Baixar código do repositório
         uses: actions/checkout@v4
 
+      - name: Listar ficheiros no repositório (para validação)
+        run: ls -la
+
       - name: Configurar ambiente Python
         uses: actions/setup-python@v5
         with:
@@ -26,4 +29,4 @@ jobs:
 
       - name: Executar testes de Backend
         run: |
-          pytest test_backend.py
+          pytest
